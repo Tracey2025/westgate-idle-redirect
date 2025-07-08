@@ -1,31 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Westgate Auto Redirect</title>
-  <script>
-    const queryParams = new URLSearchParams(window.location.search);
-    const page = queryParams.get('page') || 'home';
-    const targetURL = `https://sites.google.com/view/wghcdisplay/${page}?authuser=4`;
-
-    let timeout;
-
-    function resetTimer() {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
-      }, 15000); // 15 seconds
+  <title>Westgate Touchscreen Menu</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fc;
+      text-align: center;
     }
 
-    window.onload = () => {
-      // Immediately launch selected subpage
-      window.location.href = targetURL;
-      resetTimer();
-    };
-    document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
-    document.ontouchstart = resetTimer;
-  </script>
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 40px auto;
+      max-width: 600px;
+    }
+
+    .menu-button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 20px;
+      font-size: 20px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    .menu-button:hover {
+      background-color: #005fa3;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Westgate Display</h1>
+    <p>Select a zone to explore</p>
+  </header>
+
+  <div class="menu">
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home/westgate-health-club-247">Westgate Health Club 24/7</a>
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home/3street-basketball">3Street Basketball</a>
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home/all4kids-childcare">ALL4KIDS Childcare</a>
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home/grandstar-receptions">Grandstar Receptions</a>
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home/aeroworld">Aeroworld</a>
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home/contact-bookings">Contact & Bookings</a>
+    <a class="menu-button" href="https://tracey2025.github.io/westgate-idle-redirect/?page=home">Return to Home</a>
+  </div>
+
+  <div class="footer">
+    Westgate Health Club Display Interface © 2025
+  </div>
 </body>
 </html>
