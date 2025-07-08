@@ -1,73 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Idle Redirect</title>
+  <title>Westgate Auto Redirect</title>
   <script>
     const queryParams = new URLSearchParams(window.location.search);
     const page = queryParams.get('page') || 'home';
     const targetURL = `https://sites.google.com/view/wghcdisplay/${page}?authuser=4`;
 
     let timeout;
-    let countdown = 15;
-    let counter;
 
     function resetTimer() {
       clearTimeout(timeout);
-      clearInterval(counter);
-      countdown = 15;
-      document.getElementById('timer').textContent = countdown;
-      counter = setInterval(() => {
-        countdown--;
-        document.getElementById('timer').textContent = countdown;
-        if (countdown === 0) {
-          clearInterval(counter);
-          window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
-        }
-      }, 1000);
       timeout = setTimeout(() => {
         window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
       }, 15000); // 15 seconds
     }
 
-    window.onload = resetTimer;
+    window.onload = () => {
+      // Immediately launch selected subpage
+      window.location.href = targetURL;
+      resetTimer();
+    };
     document.onmousemove = resetTimer;
     document.onkeypress = resetTimer;
     document.ontouchstart = resetTimer;
   </script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f7fb;
-      text-align: center;
-    }
-    header {
-      padding: 20px;
-      background-color: #0077cc;
-      color: white;
-    }
-    #timer {
-      font-size: 36px;
-      font-weight: bold;
-      margin: 10px 0;
-      color: #0077cc;
-    }
-    iframe {
-      width: 100%;
-      height: calc(100vh - 120px);
-      border: none;
-    }
-  </style>
 </head>
 <body>
-  <header>
-    <h1>Westgate Display Mode</h1>
-    <p>Redirecting in <span id="timer">15</span> seconds of inactivity…</p>
-  </header>
-  <iframe src="" id="displayFrame" title="Google Site"></iframe>
-
-  <script>
-    document.getElementById('displayFrame').src = targetURL;
-  </script>
 </body>
 </html>
