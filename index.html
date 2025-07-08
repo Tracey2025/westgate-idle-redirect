@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Idle Redirect</title>
+  <script>
+    let timeout;
+    function resetTimer() {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        window.location.href = 'https://sites.google.com/view/https://sites.google.com/view/wghcdisplay/home?authuser=4';
+      }, 300000); // 5 minutes
+    }
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+  </script>
+</head>
+<body>
+  <h1>Welcome to Westgate</h1>
+  <p>This page will redirect after 1 minutes of inactivity.</p>
+</body>
+</html>
