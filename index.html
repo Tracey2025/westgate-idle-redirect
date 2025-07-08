@@ -8,13 +8,13 @@
     const targetURL = `https://sites.google.com/view/wghcdisplay/${page}?authuser=4`;
 
     let timeout;
-    let countdown = 60;
+    let countdown = 15;
     let counter;
 
     function resetTimer() {
       clearTimeout(timeout);
       clearInterval(counter);
-      countdown = 60;
+      countdown = 15;
       document.getElementById('timer').textContent = countdown;
       counter = setInterval(() => {
         countdown--;
@@ -26,12 +26,13 @@
       }, 1000);
       timeout = setTimeout(() => {
         window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
-      }, 60000);
+      }, 15000); // 15 seconds
     }
 
     window.onload = resetTimer;
     document.onmousemove = resetTimer;
     document.onkeypress = resetTimer;
+    document.ontouchstart = resetTimer;
   </script>
   <style>
     body {
@@ -61,7 +62,7 @@
 <body>
   <header>
     <h1>Westgate Display Mode</h1>
-    <p>Redirecting in <span id="timer">60</span> seconds of inactivity…</p>
+    <p>Redirecting in <span id="timer">15</span> seconds of inactivity…</p>
   </header>
   <iframe src="" id="displayFrame" title="Google Site"></iframe>
 
