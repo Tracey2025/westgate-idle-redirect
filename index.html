@@ -5,6 +5,8 @@
   <script>
     let timeout;
     let countdown = 60; // seconds
+
+    // Update countdown display every second
     const timerDisplay = () => {
       const timerEl = document.getElementById('timer');
       if (countdown > 0) {
@@ -16,6 +18,7 @@
       }
     };
 
+    // Reset the timer and countdown on any user interaction
     function resetTimer() {
       clearTimeout(timeout);
       clearInterval(counter);
@@ -34,16 +37,25 @@
   </script>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fb;
       text-align: center;
-      padding-top: 60px;
-      background-color: #f2f2f2;
+      padding-top: 80px;
+      color: #333;
+    }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 20px;
     }
     #timer {
-      font-size: 48px;
+      display: block;
+      font-size: 64px;
       font-weight: bold;
       color: #0077cc;
-      margin-top: 20px;
+      margin-top: 15px;
     }
   </style>
 </head>
