@@ -5,83 +5,52 @@
   <style>
     body {
       margin: 0;
-      background-color: #000;
       font-family: Arial, sans-serif;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     h1 {
-      margin: 40px 0 20px;
+      margin: 40px 0 10px;
       font-size: 2rem;
       letter-spacing: 1px;
       text-align: center;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      max-width: 1100px;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      max-width: 1300px;
       width: 100%;
       padding: 20px;
       box-sizing: border-box;
     }
 
+    .grid {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      padding-right: 20px;
+      box-sizing: border-box;
+    }
+
     .tile {
-      background-color: #1a1a1a;
-      border: 1px solid #555;
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
       border-radius: 10px;
       text-align: center;
-      padding: 30px 15px;
-      font-size: 1.1rem;
-      color: #fff;
+      padding: 25px 15px;
+      font-size: 1rem;
+      color: #000;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.2s;
     }
 
     .tile:hover {
-      background-color: #333;
-    }
-  </style>
-  <script>
-    let timeout;
-
-    function startTimer() {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        window.location.href = 'https://sites.google.com/view/wghcdisplay/home';
-      }, 15000); // Auto return after 15 seconds
-    }
-
-    window.onload = startTimer;
-    document.onmousemove = startTimer;
-    document.onkeypress = startTimer;
-    document.ontouchstart = startTimer;
-
-    function openPage(subpage) {
-      window.location.href = `https://sites.google.com/view/wghcdisplay/home/${subpage}`;
-    }
-  </script>
-</head>
-<body>
-  <h1>Westgate Precinct Information Kiosk</h1>
-  <div class="grid">
-    <div class="tile" onclick="openPage('westgate-health-club-247')">Westgate Health Club 24/7</div>
-    <div class="tile" onclick="openPage('all4kids-childcare')">ALL4KIDS Childcare</div>
-    <div class="tile" onclick="openPage('mma-mozhdeh-martial-arts')">MMA Mozhdeh Martial Arts</div>
-    <div class="tile" onclick="openPage('olympia-athletics')">Olympia Athletics</div>
-    <div class="tile" onclick="openPage('beach-volley-ball')">Beach Volley Ball</div>
-    <div class="tile" onclick="openPage('paul-sadler-swim-land')">Paul Sadler Swimland</div>
-    <div class="tile" onclick="openPage('3street-basket-ball')">3Street Basketball</div>
-    <div class="tile" onclick="openPage('cliffhanger-rock-climbing')">Cliffhanger Rock Climbing</div>
-    <div class="tile" onclick="openPage('tranz-wash-car-wash')">Tranz Wash Car Wash</div>
-    <div class="tile" onclick="openPage('aeroworld')">Aeroworld</div>
-    <div class="tile" onclick="openPage('fresh-vibes-cafe')">Fresh Vibes Cafe</div>
-    <div class="tile" onclick="openPage('westgate-indoor-sports')">Westgate Indoor Sports</div>
-    <div class="tile" onclick="openPage('leos-kingdom-play-centre')">Leo’s Kingdom Play Centre</div>
-  </div>
-</body>
-</html>
+     
