@@ -1,44 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Westgate Idle Redirect</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+  <title>Westgate Shell Redirect</title>
   <script>
     const queryParams = new URLSearchParams(window.location.search);
     const page = queryParams.get('page') || 'home';
     const targetURL = `https://sites.google.com/view/wghcdisplay/${page}`;
-    let timeout;
+    const homeURL = 'https://sites.google.com/view/wghcdisplay/home';
 
-    function startTimer() {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        document.querySelector('iframe').src = 'https://sites.google.com/view/wghcdisplay/home';
-      }, 15000); // 15 seconds
-    }
+    // Start timeout BEFORE redirecting
+    setTimeout(() => {
+      window.location.href = homeURL;
+    }, 15000); // 15 seconds
 
+    // Immediately send visitor to subpage
     window.onload = () => {
-      document.querySelector('iframe').src = targetURL;
-      startTimer();
+      window.location.href = targetURL;
     };
-
-    document.onmousemove = startTimer;
-    document.onkeypress = startTimer;
-    document.ontouchstart = startTimer;
   </script>
 </head>
 <body>
-  <iframe src="about:blank"></iframe>
 </body>
 </html>
