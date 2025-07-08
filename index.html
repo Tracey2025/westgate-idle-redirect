@@ -3,34 +3,32 @@
 <head>
   <title>Idle Redirect</title>
   <script>
+    const queryParams = new URLSearchParams(window.location.search);
+    const page = queryParams.get('page') || 'home';
+    const targetURL = `https://sites.google.com/view/wghcdisplay/${page}?authuser=4`;
+
     let timeout;
-    let countdown = 60; // seconds
+    let countdown = 60;
+    let counter;
 
-    // Update countdown display every second
-    const timerDisplay = () => {
-      const timerEl = document.getElementById('timer');
-      if (countdown > 0) {
-        countdown--;
-        timerEl.textContent = countdown;
-      } else {
-        clearInterval(counter);
-        window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
-      }
-    };
-
-    // Reset the timer and countdown on any user interaction
     function resetTimer() {
       clearTimeout(timeout);
       clearInterval(counter);
       countdown = 60;
       document.getElementById('timer').textContent = countdown;
-      counter = setInterval(timerDisplay, 1000);
+      counter = setInterval(() => {
+        countdown--;
+        document.getElementById('timer').textContent = countdown;
+        if (countdown === 0) {
+          clearInterval(counter);
+          window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
+        }
+      }, 1000);
       timeout = setTimeout(() => {
         window.location.href = 'https://sites.google.com/view/wghcdisplay/home?authuser=4';
       }, 60000);
     }
 
-    let counter;
     window.onload = resetTimer;
     document.onmousemove = resetTimer;
     document.onkeypress = resetTimer;
@@ -38,29 +36,37 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f7fb;
+      margin: 0;
+      background: #f4f7fb;
       text-align: center;
-      padding-top: 80px;
-      color: #333;
     }
-    h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 20px;
+    header {
+      padding: 20px;
+      background-color: #0077cc;
+      color: white;
     }
     #timer {
-      display: block;
-      font-size: 64px;
+      font-size: 36px;
       font-weight: bold;
+      margin: 10px 0;
       color: #0077cc;
-      margin-top: 15px;
+    }
+    iframe {
+      width: 100%;
+      height: calc(100vh - 120px);
+      border: none;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Westgate</h1>
-  <p>Redirecting after <span id="timer">60</span> seconds of inactivity...</p>
+  <header>
+    <h1>Westgate Display Mode</h1>
+    <p>Redirecting in <span id="timer">60</span> seconds of inactivity…</p>
+  </header>
+  <iframe src="" id="displayFrame" title="Google Site"></iframe>
+
+  <script>
+    document.getElementById('displayFrame').src = targetURL;
+  </script>
 </body>
 </html>
