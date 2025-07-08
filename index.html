@@ -1,23 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Westgate Auto Redirect</title>
+  <title>Westgate Idle Redirect</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
   <script>
     const queryParams = new URLSearchParams(window.location.search);
     const page = queryParams.get('page') || 'home';
     const targetURL = `https://sites.google.com/view/wghcdisplay/${page}`;
-
     let timeout;
 
     function startTimer() {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        window.location.href = 'https://sites.google.com/view/wghcdisplay/home';
+        document.querySelector('iframe').src = 'https://sites.google.com/view/wghcdisplay/home';
       }, 15000); // 15 seconds
     }
 
     window.onload = () => {
-      window.location.href = targetURL;
+      document.querySelector('iframe').src = targetURL;
       startTimer();
     };
 
@@ -27,5 +39,6 @@
   </script>
 </head>
 <body>
+  <iframe src="about:blank"></iframe>
 </body>
 </html>
