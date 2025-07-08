@@ -14,29 +14,29 @@
     }
 
     h1 {
-      margin: 40px 0 10px;
+      margin: 30px 0 20px;
       font-size: 2rem;
-      letter-spacing: 1px;
       text-align: center;
     }
 
-    .container {
+    .wrapper {
       display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: flex-start;
-      flex-wrap: wrap;
-      max-width: 1300px;
       width: 100%;
-      padding: 20px;
+      max-width: 1300px;
       box-sizing: border-box;
+      padding: 20px;
     }
 
     .grid {
-      flex: 1;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 20px;
-      padding-right: 20px;
+      flex: 1;
+      max-width: 700px;
       box-sizing: border-box;
     }
 
@@ -47,7 +47,6 @@
       text-align: center;
       padding: 25px 15px;
       font-size: 1rem;
-      color: #000;
       cursor: pointer;
       transition: background-color 0.2s;
     }
@@ -56,13 +55,13 @@
       background-color: #e0e0e0;
     }
 
-    .map-container {
+    .map {
       flex: 1;
       max-width: 500px;
-      box-sizing: border-box;
+      margin-left: 20px;
     }
 
-    .map-container img {
+    .map img {
       width: 100%;
       height: auto;
       border-radius: 8px;
@@ -71,14 +70,12 @@
   </style>
   <script>
     let timeout;
-
     function startTimer() {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         window.location.href = 'https://sites.google.com/view/wghcdisplay/home';
       }, 15000);
     }
-
     window.onload = startTimer;
     document.onmousemove = startTimer;
     document.onkeypress = startTimer;
@@ -91,7 +88,7 @@
 </head>
 <body>
   <h1>Westgate Precinct Information Kiosk</h1>
-  <div class="container">
+  <div class="wrapper">
     <div class="grid">
       <div class="tile" onclick="openPage('westgate-health-club-247')">Westgate Health Club 24/7</div>
       <div class="tile" onclick="openPage('all4kids-childcare')">ALL4KIDS Childcare</div>
@@ -107,7 +104,7 @@
       <div class="tile" onclick="openPage('westgate-indoor-sports')">Westgate Indoor Sports</div>
       <div class="tile" onclick="openPage('leos-kingdom-play-centre')">Leo’s Kingdom Play Centre</div>
     </div>
-    <div class="map-container">
+    <div class="map">
       <img src="WGHC.png" alt="Westgate Site Map">
     </div>
   </div>
